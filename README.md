@@ -13,3 +13,5 @@ Running the app consists of two separate components: building (and then starting
 1. ```cd frontend```
 2. ```npm i expo```
 3. ```npm run <web|android|ios>```
+
+Alternatively, you can run `npm start` to open the Metro Bundler
