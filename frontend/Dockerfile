@@ -1,8 +1,10 @@
-FROM node:14.15.4-alpine3.12 as build
+FROM node:18-alpine as build
 
 WORKDIR /app
 
 # Fix this, this is garbage
 COPY . .
+
+RUN npm i
 
 CMD ["npm", "start"]
