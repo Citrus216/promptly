@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.promptly.backend.database.schemas.Prompt;
 
 public interface PromptRepository extends MongoRepository<Prompt, String>{
-    
+    // TODO: Implement PromptRepository methods
 }
