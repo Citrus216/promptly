@@ -12,4 +12,5 @@ public class PromptService {
     private PromptRepository promptRepository;
 
     // TODO: Implement PromptService methods
+    
 }
