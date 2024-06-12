@@ -1,4 +1,4 @@
-package com.promptly.backend.database.services;
+package com.promptly.backend.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,5 @@ public class UserService {
     
     @Autowired
     private UserRepository userRepository;
-
-    // TODO: Implement UserService methods
     
 }
