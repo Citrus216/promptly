@@ -11,13 +11,22 @@ public class Prompt {
     private String id;
     private Date dateCreated;
     private String promptString;
+    
+    public Prompt() {
+        this.dateCreated = new Date();
+    }
 
+    public Prompt(String promptString) {
+        this.promptString = promptString;
+        this.dateCreated = new Date();
+    }
+    
     // Getters and Setters
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    protected void setId(String id) {
         this.id = id;
     }
 

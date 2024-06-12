@@ -16,12 +16,25 @@ public class User {
     private String firstName;
     private String lastName;
 
+    public User() {
+        this.dateCreated = new Date();
+    }
+
+    public User(String email, String username, String password, String firstName, String lastName) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateCreated = new Date();
+    }
+
     // Getter and Setters
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    protected void setId(String id) {
         this.id = id;
     }
 

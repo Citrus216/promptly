@@ -15,13 +15,23 @@ public class Response {
     private String promptId;
     private String responseString;
 
+    public Response() {
+        this.dateCreated = new Date();
+    }
+
+    public Response(String userId, String promptId, String responseString) {
+        this.userId = userId;
+        this.promptId = promptId;
+        this.responseString = responseString;
+        this.dateCreated = new Date();
+    }
 
     // Getters and Setters
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    protected void setId(String id) {
         this.id = id;
     }
 
