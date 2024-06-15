@@ -11,9 +11,12 @@ const HomePage = () => {
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
 
   const handlePromptClick = (prompt: string) => {
-    setSelectedPrompt(prompt);
+    if (selectedPrompt === prompt) {
+      setSelectedPrompt(null);
+    } else {
+      setSelectedPrompt(prompt);
+    }
     console.log(`Prompt clicked: ${prompt}`);
-    // Navigate to the corresponding page or handle the click event here
   };
 
   const prompts = [
