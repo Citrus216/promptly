@@ -1,15 +1,18 @@
-import { Text, View } from "react-native";
+import React from "react";
+import { AppRegistry } from "react-native";
+import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function Index() {
+import HomePage from "./HomePage"; // Adjust the import path as necessary
+
+const App = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <SafeAreaProvider>
+      <HomePage />
+    </SafeAreaProvider>
   );
-}
+};
+
+AppRegistry.registerComponent("Promptly", () => App);
+
+export default App;
