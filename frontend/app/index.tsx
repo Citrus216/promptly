@@ -5,12 +5,13 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import HomePage from "./HomePage"; 
 import Login from "./Login";
+import Signup from "./Signup";
 
 const App = () => {
   return (
     <SafeAreaProvider>
       
-      <Login />
+      <Signup />
     </SafeAreaProvider>
   );
 };
