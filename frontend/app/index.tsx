@@ -3,12 +3,14 @@ import { AppRegistry } from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import HomePage from "./HomePage"; // Adjust the import path as necessary
+import HomePage from "./HomePage"; 
+import Login from "./Login";
 
 const App = () => {
   return (
     <SafeAreaProvider>
-      <HomePage />
+      
+      <Login />
     </SafeAreaProvider>
   );
 };
