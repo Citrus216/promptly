@@ -14,10 +14,10 @@ const App = () => {
   return (
     <SafeAreaProvider>
       {/* <NavigationContainer> */}
-        <Tab.Navigator>
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
           <Tab.Screen name="Home" component={HomePage} />
           <Tab.Screen name="Login" component={Login} />
-          <Tab.Screen name="Signup" component={Signup} />
+          <Tab.Screen name="Sign Up" component={Signup} />
         </Tab.Navigator>
       {/* </NavigationContainer> */}
     </SafeAreaProvider>
