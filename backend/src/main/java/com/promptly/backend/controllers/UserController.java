@@ -14,27 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("/api/v1/users")
 public class UserController {
 
-  @GetMapping("/")
+  @GetMapping("/api/v1/users")
   public List<User> getUsers() {
     return Collections.emptyList();
   }
 
-  @PostMapping("/")
+  @PostMapping("/api/v1/users")
   public void createUser(@RequestBody User user) {
 
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/api/v1/users/{id}")
   public User getUser(@PathVariable String id) {
     return null;
   }
 
-  @PatchMapping("/{id}")
+  @PatchMapping("/api/v1/users/{id}")
   public void updateUser(@PathVariable String id, @RequestBody User user) {
 
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/api/v1/users/{id}")
   public void deleteUser(@PathVariable String id) {
 
   }

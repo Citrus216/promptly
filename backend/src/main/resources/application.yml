@@ -3,6 +3,4 @@ spring:
     name: backend
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: db
+      uri: mongodb+srv://promptlydev:3PWVw5Ajgp0Z0bEI@promptlydatacluster.kdisx2e.mongodb.net/database
