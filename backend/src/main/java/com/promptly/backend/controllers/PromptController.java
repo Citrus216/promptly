@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api/v1/prompts")
+@RestController
 public class PromptController {
 
   private final PromptService promptService;
@@ -29,7 +28,7 @@ public class PromptController {
     this.promptService = promptService;
   }
 
-  @GetMapping("/")
+  @GetMapping("/api/v1/prompts")
   public ResponseEntity<List<Prompt>> getPrompts() {
     try {
       return ResponseEntity.ok(this.promptService.getAll());
@@ -38,7 +37,7 @@ public class PromptController {
     }
   }
 
-  @PostMapping("/")
+  @PostMapping("/api/v1/prompts")
   public ResponseEntity<Prompt> createPrompt(@RequestBody Prompt prompt) {
     try {
       return ResponseEntity.ok(this.promptService.create(prompt));
@@ -47,7 +46,7 @@ public class PromptController {
     }
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/api/v1/prompts/{id}")
   public ResponseEntity<Prompt> getPrompt(@PathVariable String id) {
     try {
       return ResponseEntity.ok(this.promptService.get(id));
@@ -56,7 +55,7 @@ public class PromptController {
     }
   }
 
-  @PatchMapping("/{id}")
+  @PatchMapping("/api/v1/prompts/{id}")
   public ResponseEntity<Prompt> updatePrompt(@PathVariable String id, @RequestBody Prompt prompt) {
     try {
       return ResponseEntity.ok(this.promptService.update(id, prompt));
@@ -65,7 +64,7 @@ public class PromptController {
     }
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/api/v1/prompts/{id}")
   public ResponseEntity<Prompt> deletePrompt(@PathVariable String id) {
     try {
       return ResponseEntity.ok(this.promptService.delete(id));
