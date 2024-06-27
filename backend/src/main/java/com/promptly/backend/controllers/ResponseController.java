@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api/v1/responses")
+@RestController
 public class ResponseController {
 
-  @PostMapping("/")
+  @PostMapping("/api/v1/responses")
   public void createResponse(@RequestBody Response response) {
 
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/api/v1/responses/{id}")
   public Response getResponse(@PathVariable String id) {
     return null;
   }
 
-  @PatchMapping("/{id}")
+  @PatchMapping("/api/v1/responses/{id}")
   public void updateResponse(@PathVariable String id, @RequestBody Response response) {
 
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/api/v1/responses/{id}")
   public void deleteResponse(@PathVariable String id) {
 
   }
