@@ -11,9 +11,13 @@ import java.util.Optional;
 
 @Service
 public class PromptService {
-    
+
+    private final PromptRepository promptRepository;
+
     @Autowired
-    private PromptRepository promptRepository;
+    public PromptService(PromptRepository promptRepository) {
+        this.promptRepository = promptRepository;
+    }
 
     public List<Prompt> getAll() {
         return this.promptRepository.findAll();
