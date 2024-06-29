@@ -4,7 +4,12 @@ import com.promptly.backend.database.repositories.PromptRepository;
 import com.promptly.backend.database.schemas.Prompt;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+
+import com.promptly.backend.services.PromptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,31 +21,56 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PromptController {
 
-  //TODO autowire PromptService
+  private final PromptService promptService;
+
+  @Autowired
+  public PromptController(PromptService promptService) {
+    this.promptService = promptService;
+  }
 
   @GetMapping("/api/v1/prompts")
-  public List<Prompt> getPrompts() {
-    return Collections.emptyList();
+  public ResponseEntity<List<Prompt>> getPrompts() {
+    try {
+      return ResponseEntity.ok(this.promptService.getAll());
+    } catch(Exception e) {
+      return ResponseEntity.internalServerError().body(Collections.emptyList());
+    }
   }
 
   @PostMapping("/api/v1/prompts")
-  public void createPrompt(@RequestBody Prompt prompt) {
-
+  public ResponseEntity<Prompt> createPrompt(@RequestBody Prompt prompt) {
+    try {
+      return ResponseEntity.ok(this.promptService.create(prompt));
+    } catch(Exception e) {
+      return ResponseEntity.internalServerError().build();
+    }
   }
 
   @GetMapping("/api/v1/prompts/{id}")
-  public Prompt getPrompt(@PathVariable String id) {
-    return null;
+  public ResponseEntity<Prompt> getPrompt(@PathVariable String id) {
+    try {
+      return ResponseEntity.ok(this.promptService.get(id));
+    } catch(Exception e) {
+      return ResponseEntity.internalServerError().build();
+    }
   }
 
   @PatchMapping("/api/v1/prompts/{id}")
-  public void updatePrompt(@PathVariable String id, @RequestBody Prompt prompt) {
-
+  public ResponseEntity<Prompt> updatePrompt(@PathVariable String id, @RequestBody Prompt prompt) {
+    try {
+      return ResponseEntity.ok(this.promptService.update(id, prompt));
+    } catch(Exception e) {
+      return ResponseEntity.internalServerError().build();
+    }
   }
 
   @DeleteMapping("/api/v1/prompts/{id}")
-  public void deletePrompt(@PathVariable String id) {
-
+  public ResponseEntity<Prompt> deletePrompt(@PathVariable String id) {
+    try {
+      return ResponseEntity.ok(this.promptService.delete(id));
+    } catch(Exception e) {
+      return ResponseEntity.internalServerError().build();
+    }
   }
 
 }

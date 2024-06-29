@@ -3,6 +3,9 @@ package com.promptly.backend.controllers;
 import com.promptly.backend.database.schemas.User;
 import java.util.Collections;
 import java.util.List;
+
+import com.promptly.backend.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -11,8 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api/v1/users")
+@RestController
 public class UserController {
+
+  public final UserService userService;
+
+  @Autowired
+  public UserController(UserService userService) {
+    this.userService = userService;
+  }
 
   @GetMapping("/api/v1/users")
   public List<User> getUsers() {

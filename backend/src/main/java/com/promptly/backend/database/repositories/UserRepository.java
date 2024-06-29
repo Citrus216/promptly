@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.promptly.backend.database.schemas.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
-
+    // TODO: Implement UserRepository methods
 }
