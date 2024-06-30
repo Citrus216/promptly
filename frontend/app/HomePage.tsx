@@ -1,21 +1,19 @@
 import React, { useState } from "react";
+import { useWindowDimensions } from "react-native";
+import { Colors } from "../constants/Colors";
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
 } from "react-native";
 
 const HomePage = () => {
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
+  const { width, height } = useWindowDimensions();
 
   const handlePromptClick = (prompt: string) => {
-    if (selectedPrompt === prompt) {
-      setSelectedPrompt(null);
-    } else {
-      setSelectedPrompt(prompt);
-    }
+    setSelectedPrompt(selectedPrompt === prompt ? null : prompt);
     console.log(`Prompt clicked: ${prompt}`);
   };
 
@@ -27,6 +25,8 @@ const HomePage = () => {
     "If you could travel to any fictional world from a book or movie, where would you go and what adventures would you have there?",
   ];
 
+  const promptBoxWidth = width > height ? "50%" : "80%";
+
   return (
     <View style={styles.container}>
       {prompts.map((prompt, index) => (
@@ -34,6 +34,7 @@ const HomePage = () => {
           key={index}
           style={[
             styles.promptBox,
+            { width: promptBoxWidth },
             selectedPrompt === prompt && styles.selectedPromptBox,
           ]}
           onPress={() => handlePromptClick(prompt)}
@@ -44,25 +45,19 @@ const HomePage = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "2%",
-  },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     padding: "2%",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: Colors.light.background,
   },
   promptBox: {
-    width: "60%",
     padding: "2%",
     marginVertical: "0.6%",
-    backgroundColor: "#ffffff",
+    backgroundColor: Colors.light.white,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -74,10 +69,10 @@ const styles = StyleSheet.create({
   promptText: {
     textAlign: "center",
     fontSize: 18,
-    color: "#333",
+    color: Colors.light.text,
   },
   selectedPromptBox: {
-    backgroundColor: "#cceeff", // Highlight color for selected prompt
+    backgroundColor: Colors.light.primary, // Highlight color for selected prompt
   },
 });
 

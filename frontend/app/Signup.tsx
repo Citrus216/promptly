@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Alert, useWindowDimensions } from 'react-native';
+import { Colors } from '../constants/Colors';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -8,6 +9,7 @@ const Signup = () => {
   const [verifyPassword, setVerifyPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const { width, height } = useWindowDimensions();
 
   const handleSignup = () => {
     if (password !== verifyPassword) {
@@ -19,11 +21,13 @@ const Signup = () => {
     // Add your signup logic here
   };
 
+  const inputWidth = width > height ? '40%' : '80%';
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sign Up</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={email}
         onChangeText={setEmail}
         placeholder="Enter your email"
@@ -32,7 +36,7 @@ const Signup = () => {
         autoCapitalize="none"
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={username}
         onChangeText={setUsername}
         placeholder="Enter your username"
@@ -40,21 +44,21 @@ const Signup = () => {
         autoCapitalize="none"
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={firstName}
         onChangeText={setFirstName}
         placeholder="Enter your first name"
         placeholderTextColor="#888"
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={lastName}
         onChangeText={setLastName}
         placeholder="Enter your last name"
         placeholderTextColor="#888"
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={password}
         onChangeText={setPassword}
         placeholder="Enter your password"
@@ -62,14 +66,14 @@ const Signup = () => {
         secureTextEntry
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={verifyPassword}
         onChangeText={setVerifyPassword}
         placeholder="Verify your password"
         placeholderTextColor="#888"
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
+      <TouchableOpacity style={[styles.button, { width: inputWidth }]} onPress={handleSignup}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
@@ -82,33 +86,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: Colors.light.background,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.light.text,
   },
   input: {
-    width: '40%',
     padding: 15,
     marginVertical: 10,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 10,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.light.white,
   },
   button: {
-    width: '40%',
     padding: 15,
     marginVertical: 10,
-    backgroundColor: '#007BFF',
+    backgroundColor: Colors.light.secondary,
     borderRadius: 10,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: Colors.light.text,
     fontSize: 16,
     fontWeight: 'bold',
   },

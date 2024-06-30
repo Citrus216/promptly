@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, useWindowDimensions } from 'react-native';
+import { Colors } from '../constants/Colors';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { width, height } = useWindowDimensions();
 
   const handleLogin = () => {
     console.log(`Email: ${email}, Password: ${password}`);
     // Add your login logic here
   };
 
+  const inputWidth = width > height ? '40%' : '80%';
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={email}
         onChangeText={setEmail}
         placeholder="Enter your email"
@@ -23,14 +27,14 @@ const Login = () => {
         autoCapitalize="none"
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { width: inputWidth }]}
         value={password}
         onChangeText={setPassword}
         placeholder="Enter your password"
         placeholderTextColor="#888"
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={[styles.button, { width: inputWidth }]} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
     </View>
@@ -43,33 +47,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: Colors.light.background,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.light.text,
   },
   input: {
-    width: '40%',
     padding: 15,
     marginVertical: 10,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 10,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.light.white,
   },
   button: {
-    width: '40%',
     padding: 15,
     marginVertical: 10,
-    backgroundColor: '#007BFF',
+    backgroundColor: Colors.light.secondary,
     borderRadius: 10,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: Colors.light.text,
     fontSize: 16,
     fontWeight: 'bold',
   },
